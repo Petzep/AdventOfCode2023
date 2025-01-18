@@ -58,14 +58,14 @@ void printLines(bool exclude) {
                     if(number_size > 3)
                     {
                         // Note to self:, found a number with an end that is 18446744073709551615
-                        //std::cout << "Number size is bigger than 1, something is wrong!";
+                        // std::cout << "Number size is bigger than 1, something is wrong!";
                     }
 
                     // Another bug, found, somewhere around number 321 during inclusion
                     if(numberInfo.number == 321 && !exclude)
                     {
                         // Don't print, but put a breakpoint here
-                        //std::cout << "Found number 321, something is wrong around this!";
+                        // std::cout << "Found number 321, something is wrong around this!";
                     }
 
                     // Be sure to increase the x position -1, because the loop will increase it by 1
@@ -103,9 +103,10 @@ void printLines(bool exclude) {
 
 int main() {
     // Load file
-    std::ifstream file("input.txt");
-    // std::ifstream                        file("example.txt");
-    std::string line;
+    //std::ifstream file("input.txt");
+    //std::ifstream file("example.txt");
+    std::ifstream file("bugggedInput.txt");
+    std::string   line;
 
     // Read file and parse the info
     while(std::getline(file, line))
@@ -125,7 +126,7 @@ int main() {
             {
                 break;
             }
-            auto numberEnd    = line.find_first_not_of("0123456789", numberStart);
+            auto numberEnd = line.find_first_not_of("0123456789", numberStart);
             // To prevent numbers at the edge, we need to bound the number end
             numberEnd         = std::min(numberEnd, line.size()); // The end of the number
             auto numberCount  = numberEnd - numberStart;

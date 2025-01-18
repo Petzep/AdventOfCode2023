@@ -23,6 +23,9 @@
     <Text Include="example.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="bugggedInput.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.txt">

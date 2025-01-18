@@ -131,6 +131,7 @@
     <ClCompile Include="Day3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="bugggedInput.txt" />
     <Text Include="example.txt" />
   </ItemGroup>
   <ItemGroup>
