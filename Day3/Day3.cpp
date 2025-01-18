@@ -103,9 +103,9 @@ void printLines(bool exclude) {
 
 int main() {
     // Load file
-    //std::ifstream file("input.txt");
+    std::ifstream file("input.txt");
     //std::ifstream file("example.txt");
-    std::ifstream file("bugggedInput.txt");
+    //std::ifstream file("bugggedInput.txt");
     std::string   line;
 
     // Read file and parse the info
@@ -164,14 +164,14 @@ int main() {
 
             // What is left must be a symbol
             // One line above, the current line and one line below
-            size_t y_start = std::max(y - 1, size_t{0}); //(size_t{0} is the same as (size_t)(0), but we need to specify the type, as sd::max only wants to compare the same types)
+            size_t y_start = size_t(std::max((int)y - 1, 0)); // cast to size_t to prevent underflow
             size_t y_end   = std::min(y + 1, lines.size() - 1);
 
             // Search for all numbers in the vicinity of the symbol
             for(size_t y_n = y_start; y_n <= y_end; y_n++)
             {
                 // one character to the left, the current character and one character to the right
-                size_t x_start = std::max(x - 1, size_t{0});
+                size_t x_start = size_t(std::max((int)x - 1, 0));
                 size_t x_end   = std::min(x + 1, lines[y_n].size() - 1);
 
                 for(int x_n = x_start; x_n <= x_end; x_n++)
@@ -181,7 +181,7 @@ int main() {
                     for(auto& numberInfo : numberVector[y_n])
                     {
                         // Check if the symbol is in the range of the number
-                        if(x_n >= numberInfo.start && x_n <= numberInfo.end)
+                        if(x_n >= numberInfo.start && x_n < numberInfo.end)
                         {
                             numberInfo.counts = true;
                         }
